@@ -42,7 +42,7 @@ const Guess: React.FC<GuessProps> = ({
           </Button>
         </Box>
       ) : (
-        <Button onClick={() => onGameFinished(status)} sx={{ width: "10vw" }} color="whitesmoke">
+        <Button onClick={() => onGameFinished(status)} sx={{ width: "10vw", color: "whitesmoke" }}>
           {status === "won" ? "Save your score!" : "Try again!"}
         </Button>
       )}
