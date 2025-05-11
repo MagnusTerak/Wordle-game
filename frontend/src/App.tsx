@@ -48,7 +48,11 @@ const theme = createTheme({
             backgroundColor: "#1a1a1d",
             border: "2px solid #F5F5F5",
           },
-          color: "#f5f5f5"
+          color: "#f5f5f5",
+
+          "&.Mui-disabled": {
+            color: "lightgrey"
+          }
         },
       },
     },
@@ -62,7 +66,13 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          color: "#f5f5f5"
+          color: "#f5f5f5",
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
         }
       }
     },

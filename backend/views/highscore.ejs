@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8">
+    <title>Wordle - Highscores</title>
+    <style>
+      body {
+        background-color: #27272B;
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .mainContainer {
+        width: 40vw;
+        height: 80vh;
+        margin: 5rem auto;
+        background-color: beige;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .highscoreContainer {
+        justify-content: center;
+        text-align: center;
+      }
+
+      li {
+        font-size: larger;
+        margin-bottom: 2vh;
+      }
+
+      .buttonBackToGame {
+        padding: 1rem;
+        font-size: larger;
+        border: 1.5px solid whitesmoke;
+        background-color: #27272B;
+        color: whitesmoke;
+        text-decoration: none;
+        border-radius: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="highscoreContainer">
+        <h1>Highscores!</h1>
+        <ul style="max-height: 70%; overflow: auto; margin-bottom: 2rem; padding: 0 2rem 0 2rem;">
+          <% highscores.forEach(score => { %>
+            <li><%= score.userName %> - <%= score.time %> seconds 
+                (<%= score.wordLength %> letters, Unique letters: <%= score.uniqueLetters.join(", ") %>) 
+                Guesses: <%= score.guesses.join(", ") %>
+            </li>
+          <% }); %>
+        </ul>
+        <a href="/" class="buttonBackToGame">Back to game</a>
+      </div>
+    </div> 
+  </body>
+</html>

@@ -38,13 +38,13 @@ export default function Settings({ onSubmit }: { onSubmit: (data: { numOfLetters
         borderRadius: "1rem"
       }}>
         <Typography variant='body1' sx={{ marginBottom: "2vh"}}>
-          Enter the number of letters you want your word to be!
+          Enter the amount of letters for the word you want to guess!
         </Typography>
         <TextField
           value={numOfLetters}
           onChange={handleNumOfLetterChange}
           type="number"
-          placeholder="Number of letters!"
+          placeholder="Amount of letters"
           sx={{
             width: "200px",
             textTransform: "uppercase",

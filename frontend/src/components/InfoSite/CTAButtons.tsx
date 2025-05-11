@@ -10,7 +10,7 @@ export default function CTAButtons() {
         Start Playing
       </Button>
 
-      <Button variant="contained">Check Highscores</Button>
+      <Button href="/highscore" variant="contained">Check Highscores</Button>
     </Box>
   );
 }

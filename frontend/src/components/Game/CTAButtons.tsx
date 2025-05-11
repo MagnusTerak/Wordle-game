@@ -14,7 +14,7 @@ export default function CTAButtons() {
       <Button onClick={() => navigate("/info")}>
         Information
       </Button>
-      <Button>Highscores</Button>
+      <Button href="/highscore">Highscores</Button>
     </Box>
   );
 }

@@ -29,6 +29,7 @@ export default function Game() {
   // Variables
   const maxGuesses = 5;
   let wordLength = 5;
+  let uniqueLetters = false;
 
   
 
@@ -47,7 +48,7 @@ export default function Game() {
 
       if (currentGuess === word) {
         handleStatusChange("won");
-        handleGameFinished("won");
+        stopTimer();
       } else if (guesses.length >= maxGuesses - 1) {
         handleStatusChange("lose");
       } else {
@@ -69,16 +70,32 @@ export default function Game() {
     setStatusMessage("");
   };
 
-  const handleGameFinished = (status: string) => {
+  const handleGameFinished = (status: string, userName: string) => {
     if (status === "won") {
-      stopTimer();
-      // SaveHighScore();
+      saveHighscore(userName);
     } else if (status === "lose") {
       resetGame();
+      handleGameState(false);
     }
   };
 
+  const saveHighscore = (userName: string) => {
+    fetch("http://localhost:5080/api/savehighscore", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userName: userName, time: (elapsedTime / 1000).toFixed(1), wordLength: wordLength, uniqueLetters: uniqueLetters, guesses: guesses}),
+    })
+      .then(response => response.json()) 
+      .then(() => window.location.href = "/highscore")
+      .catch(error => console.error("Error fetching word:", error));
+  }
+
+
   const startGame = (data: GameData) => {
+    uniqueLetters = data.uniqueLetters;
+
     fetch("http://localhost:5080/api/getWord", {
       method: "POST", 
       headers: {
@@ -120,7 +137,6 @@ export default function Game() {
 
   const stopTimer = (): void => {
     setRunning(false);
-    // saveToDatabase(elapsedTime);
   };
 
   return (
@@ -130,6 +146,7 @@ export default function Game() {
           <Settings
             onSubmit={startGame}
           ></Settings>
+          <CTAButtons></CTAButtons>
         </Container>
       ) : (
         <Container>
