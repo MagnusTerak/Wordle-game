@@ -9,7 +9,7 @@ export default function Settings({ onSubmit }: { onSubmit: (data: { numOfLetters
     onSubmit({ numOfLetters, uniqueLetters: checkedState })
   }
 
-  const handleNumOfLetterChange = (e) => {
+  const handleNumOfLetterChange = (e: any) => {
     setNumOfLetters(e.target.value);
   }
 
