@@ -7,15 +7,29 @@ type TilegridProps = {
   maxGuesses: number;
 };
 
-const getLetterColor = (
-  letter: string,
-  word: string,
-  index: number
-): string => {
-  if (!letter) return "transparent";
-  if (word[index] === letter) return "green";
-  if (word.includes(letter)) return "orange";
-  return "gray";
+const getLetterColors = (guess: string, word: string): string[] => {
+  const colors = new Array(guess.length).fill("red"); 
+  const letterCount: Record<string, number> = {};
+
+  for (const char of word) {
+    letterCount[char] = (letterCount[char] || 0) + 1;
+  }
+
+  for (let i = 0; i < guess.length; i++) {
+    if (guess[i] === word[i]) {
+      colors[i] = "green";
+      letterCount[guess[i]]--; 
+    }
+  }
+
+  for (let i = 0; i < guess.length; i++) {
+    if (colors[i] === "red" && word.includes(guess[i]) && letterCount[guess[i]] > 0) {
+      colors[i] = "orange";
+      letterCount[guess[i]]--;
+    }
+  }
+
+  return colors;
 };
 
 const Tilegrid: React.FC<TilegridProps> = ({ guesses, word, maxGuesses }) => {
@@ -41,11 +55,9 @@ const Tilegrid: React.FC<TilegridProps> = ({ guesses, word, maxGuesses }) => {
           gridTemplateColumns={`repeat(${tileLength}, 1fr)`}
           gap="15px"
         >
-          {Array.from(guess).map((letter, index) => {
-            const returningColor =
-              rowIndex < guesses.length
-                ? getLetterColor(letter, word, index)
-                : "transparent";
+          {Array.from(guess as string).map((letter, index) => {
+            const colors = rowIndex < guesses.length ? getLetterColors(guess, word) : [];
+            const returningColor = colors[index] || "transparent"; 
 
             return (
               <Box
