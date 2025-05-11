@@ -8,6 +8,7 @@ export default function CTAButtons() {
     <Box
       sx={{
         display: "flex",
+        marginTop: "5vh"
       }}
     >
       <Button onClick={() => navigate("/info")}>

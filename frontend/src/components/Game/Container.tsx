@@ -15,7 +15,6 @@ export default function Container({ children }: ContainerProps) {
         borderRadius: 2,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
         alignItems: "center", 
         padding: 2,
       }}

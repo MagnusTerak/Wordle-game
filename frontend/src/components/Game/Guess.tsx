@@ -21,7 +21,7 @@ const Guess: React.FC<GuessProps> = ({
   status,
 }) => {
   return (
-    <Box display="flex" justifyContent="center">
+    <Box sx={{ marginTop: "2vh"}} display="flex" justifyContent="center">
       {status !== "won" && status !== "lose" ? (
         <Box display="flex" gap="8px">
           <TextField

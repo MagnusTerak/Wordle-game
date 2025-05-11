@@ -24,7 +24,7 @@ const responseMessage = function (status: string, wordLength: number, guessesLef
 
 const Feedback: React.FC<statusProps> = ({ status, wordLength, guessesLeft }) => {
   return (
-    <Box>
+    <Box sx={{marginTop: "2vh"}}>
       <Typography variant="h6">{responseMessage(status, wordLength, guessesLeft)}</Typography>
     </Box>
   );
