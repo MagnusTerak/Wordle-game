@@ -47,10 +47,52 @@ const theme = createTheme({
           "&:hover": {
             backgroundColor: "#1a1a1d",
             border: "2px solid #F5F5F5",
-          }
+          },
+          color: "#f5f5f5"
         },
       },
     },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#f5f5f5"
+        } 
+      }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: "#f5f5f5"
+        }
+      }
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          color: "#f5f5f5"
+        }
+      }
+    },
+    MuiSwitch: {
+      styleOverrides: {
+        switchBase: {
+          color: "#ccc"
+        },
+        colorPrimary: {
+          "&.Mui-checked": {
+            color: "#f2ff00"
+          }
+        },
+        track: {
+          opacity: 0.2,
+          backgroundColor: "#fff",
+          ".Mui-checked.Mui-checked + &": {
+            opacity: 0.7,
+            backgroundColor: "#fff"
+          }
+        }
+      }
+    }
   },
 });
 
