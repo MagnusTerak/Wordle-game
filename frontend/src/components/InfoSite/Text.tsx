@@ -1,6 +1,8 @@
 import { Box, Typography } from "@mui/material";
 
-const ListItemText = ({ children }) => (
+import { FC, ReactNode } from "react";
+
+const ListItemText: FC<{ children: ReactNode }> = ({ children }) => (
   <li style={{ paddingBottom: "2%", color: "whitesmoke" }}>
     <Typography variant="body1">{children}</Typography>
   </li>
